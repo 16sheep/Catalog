@@ -18,7 +18,7 @@ In order to run this app you need to install
 3. Run vagrant up, then vagrant ssh from command line
 4. Clone this repository into vagrant folder 
 6. Create a google app from https://console.developers.google.com/ 
-7. Create credentials and download JSON file with credentials into the      projects directory
+7. Create credentials and download client_secrets.json file with credentials into the project directory
 8. Add your api key instead of "YOUR_API_KEY" in destinations.html 
 9. Run views.py from virtual machine terminal
 10.Run adddata.py to populate the database with examples
