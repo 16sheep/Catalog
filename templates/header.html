@@ -1,0 +1,16 @@
+<div class="container header-container col-md-12">
+	<div class="col-md-6 header-link">
+		<a href="{{url_for('showDestinations')}}">
+			<span aria-hidden="true"></span>Show All destinations
+		</a>
+	</div>
+	<div class="col-md-6 text-right header-link">
+					{% if 'username' not in session %}
+			<a href="{{url_for('showLogin')}}">Click Here to Login </a>
+			{% else %}
+			<a href="{{url_for('gdisconnect')}}">Logout </a>
+			<br>
+			<a href="{{url_for('showMyDestinations')}}">My destinations </a>
+			{% endif %}		
+	</div>
+</div>

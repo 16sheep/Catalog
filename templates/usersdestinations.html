@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+<div class="col-md-12">
+	{% for destination in destinations %}
+		<a href = "{{url_for('showDestinationInfo', destination_id = destination.id)}}">
+			<div class="row">
+					<div class="col-md-10 destination-list">
+						<h3>{{destination.name}}</h3>
+					</div>
+			</div>
+		</a>
+	{% endfor %}
+</div>
+
+	<div class="col-md-12 crud-container">
+		<a href="{{url_for('newDestination')}}">Add destination</a>
+	</div>
+{% endblock %}

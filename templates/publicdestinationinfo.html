@@ -1,0 +1,41 @@
+{% extends "main.html" %} {% block content %} {% include "header.html" %}
+
+<div class="col-md-12 destination-info-container" style="background-image: url('{{destination.image}}');">
+<div class="pseudo-destination-info">
+	<h1>{{destination.name}}</h1>
+	<h4>{{destination.description}}</h4>
+	<h4>{{destination.email}}</h4>
+	<h4>{{destination.phone}}</h4>
+	<h4>{{address.town}}</h4>
+	<h4>Open at: {{destination.times}}</h4>	
+</div>
+</div>
+
+<div class='flash'>
+	{% with messages = get_flashed_messages() %} {% if messages %}
+
+	<ul>
+		{% for message in messages %}
+		<li>
+			<strong> {{ message }} </strong>
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %} {% endwith %}
+</div>
+
+{% if attractions !=[] %}
+<div class="col-md-12">
+				<h2>Attractions</h2>
+			{% for attraction in attractions %}
+			<div class="col-md-4 attraction-container" style="background-image: url('{{attraction.image}}');">
+				<a href="{{url_for('showAttractionInfo', destination_id = destination.id, attraction_id=attraction.id)}}">
+					<h3>{{attraction.name}}</h3>
+				</a>
+				<p>{{attraction.description}}</p>
+				<p>Price: {{attraction.price}} £</p>
+			</div>	
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endblock %}

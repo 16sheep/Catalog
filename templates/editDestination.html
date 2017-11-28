@@ -1,0 +1,61 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row banner">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>Edit {{destination.name}}</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="{{ url_for('editDestination',destination_id = destination.id)}}" method = "post">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type ="text" class="form-control" name="name" value="{{destination.name}}">
+					<label for="description">Description:</label>
+					<textarea type ="text" class="form-control" maxlength="250" name="description">{{destination.description}}</textarea>
+					<label for="image">Picture URL:</label>
+					<input type ="text" class="form-control" maxlength="250" name="image" value="{{destination.image}}">
+					<label for="phone">Phone:</label>
+					<input type ="text" class="form-control" maxlength="20" name="phone" value="{{destination.phone}}">
+					<label for="times">Opening times:</label>
+					<input type ="text" class="form-control" maxlength="100" name="times" value="{{destination.times}}">
+					<label for="a_line_1">Address line 1:</label>
+					<input type ="text" class="form-control" maxlength="100" name="a_line_1" value="{{address.a_line_1}}">
+					<label for="a_line_2">Address line 2</label>
+					<input type ="text" class="form-control" maxlength="100" name="a_line_2" value="{{address.a_line_2}}">
+					<label for="town">Town:</label>
+					<input type ="text" class="form-control" maxlength="100" name="town" value="{{address.town}}">
+					<label for="postcode">Postcode:</label>
+					<input type ="text" class="form-control" maxlength="100" name="postcode" value="{{address.postcode}}">
+					<label for="country">Country:</label>
+					<input type ="text" class="form-control" maxlength="100" name="country" value="{{address.country}}">
+					<div class="padding-bottom"></div>
+					<button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span aria-hidden="true"></span>Save</button>
+					<a href = '{{url_for('showDestinations')}}'>
+						<button class="btn btn-default">
+						<span aria-hidden="true"></span> Cancel</button>
+					</a>
+				</div>
+			</form>
+			<button type="submit" class="btn btn-default" id="delete" type="submit">
+				<span aria-hidden="true"></span>Delete</button>
+		</div>
+	</div>
+<script>
+    document.getElementById('delete').addEventListener('click', function(event) {
+        console.log(event)
+        var pathname = window.location.pathname
+        console.log(pathname)
+        
+        $.ajax({
+            type: "DELETE",
+            url: pathname,
+            success: function(){
+                location.href = "/destination/";
+            }
+        });
+    })
+</script>
+{% endblock %}

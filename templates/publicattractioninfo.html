@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	
+	<div class="row">
+		<div class="col-md-12">
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					<ul>
+						{% for message in messages %}
+							 <li> <strong> {{ message }} </strong> </li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			{% endwith %}
+		</div>
+	</div>
+	{% if items !=[] %}	
+		<div class="row">
+			<div class="col-md-3">
+					{% for i in items %}
+							<div>
+                                    <h3>{{i.name}} at {{destination.name}}</h3>
+                                    <p>{{i.description}}</p>
+                                    <p>Price:{{i.price}}£</p>
+							</div>
+					{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}
