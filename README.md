@@ -1,8 +1,8 @@
-###Catalog app "Local Attraction Finder"
+### Catalog app "Local Attraction Finder"
 
 Local attraction finder is a webapp made for Udacity's Full Stack Nanodegree Backend module. This project was written to learn and apply CRUD concept using Python, Postgresql, SqlAlchemy, Flask and virtual environment
 
-###Installation
+### Installation
 In order to run this app you need to install 
 
 + [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
